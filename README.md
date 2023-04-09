@@ -4,7 +4,7 @@ This application is a take home project as a part of the interview process for C
 
 [Click here for the technical requirements of the app](https://drive.google.com/file/d/19Wnt2COGt1eHJOcNsXEilfaJ2fv_N7a6/view?usp=share_link "Click here for the technical requirements of the app")
 
-Click here for live version of the app
+[Click here for live version of the app](https://cratebind.lianne.dev "Click here for live version of the app")
 
 ## Local Environment Setup
 
