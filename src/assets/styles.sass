@@ -6,6 +6,12 @@ $bright-blue: #00a1c9
 $pink: #E31B6D
 $white: white
 $light-grey: #f5f5f5
+$input-grey: #ced4da
+$input-black: #495057
+
+// Sizing Variables
+$standard-font-weight: 1.25rem
+$standard-line-height: 1.5
 
 // Grid Screen Sizes
 $screen-xl: 1200px
@@ -21,24 +27,75 @@ body
 header
   text-align: center
   img
+    height: 20rem
     margin-left: auto
     margin-right: auto
 
+input
+  border: 1px solid $input-grey
+  border-radius: .25rem
+  height: 1.85rem
+  line-height: $standard-line-height
+  color: $input-black
+  font-size: $standard-font-weight
+  padding: .375rem .75rem
+  width: 100%
+  outline-color: $pink
+
+button
+  text-align: center
+  border: 1px solid transparent
+  border-radius: .25rem
+  line-height: $standard-line-height
+  font-size: $standard-font-weight
+  padding: .375rem .75rem
+  vertical-align: middle
+  background-color: $dark-blue
+  color: $white
+  width: 100%
+
+.btn-loading::after
+  content: ""
+  position: absolute
+  width: 1.5rem
+  height: 1.5rem
+  left: auto
+  right: auto
+  margin: auto auto auto 0.5rem
+  border: 4px solid transparent
+  border-top-color: $pink
+  border-radius: 50%
+  animation: button-loading-spinner 1s ease infinite
+
+@keyframes button-loading-spinner
+  from
+    transform: rotate(0turn)
+  to
+    transform: rotate(1turn)
+
+
+.RepoForm
+  margin-left: auto
+  margin-right: auto
+  text-align: center
+  .repo-input
+    margin-bottom: 1rem
+    width: 45%
+    min-width: 20rem
+    text-align: center
+  .repo-fetch-btn
+    width: 45%
+    min-width: 20rem
+
+
+
+
+
 
 // Styles Based On Screen Sizes
-@media (max-width: $screen-sm)
-  header
-    img
-      height: 300px
 @media (min-width: $screen-md)
   header
     img
-      height: 400px
-@media (min-width: $screen-lg)
-  header
-    img
-      height: 500px
-@media (min-width: $screen-xl)
-  header
-    img
-      height: 600px
+      height: 35rem
+// @media (min-width: $screen-lg)
+// @media (min-width: $screen-xl)

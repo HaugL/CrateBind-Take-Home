@@ -22,6 +22,6 @@ To run the server locally:
 > $ npm start
 
 ## Testing
-This applicaiton uses jest and enzyme for testing. From the testing console you have full power to run all of specific tests. Load the testing console by running:
+This applicaiton uses the react testing library. From the testing console you have full power to run all or specific tests. Load the testing console by running:
 
 > $ npm test
