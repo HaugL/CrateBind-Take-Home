@@ -1,21 +1,25 @@
 import React, { useState } from 'react'
 
 function RepoForm(props) {
-  const { isSubmitting, onSubmit, onGitHubUserChange } = props
+  const { isSubmitting, onGitHubUserChange, onSubmit } = props
 
   const [gitHubUser, setGitHubUser] = useState()
 
+  const errorState = gitHubUser == ''
+  const buttonDisabled = !gitHubUser || errorState
+  const errorSpan = errorState ? (<React.Fragment><br /><span class="input-error-label">This field is required</span></React.Fragment>) : null
   return (
     <div className="RepoForm">
-      <input className='repo-input' placeholder='Enter GitHub User Here' onChange={(e) => setGitHubUser(e.currentTarget.value)}/>
+      <input className={`repo-input ${errorState ? 'input-error' : ''}`} placeholder='Enter GitHub User Here' onChange={(e) => setGitHubUser(e.currentTarget.value)}/>
+      { errorSpan }
       <br />
-      <SubmitButton isSubmitting={isSubmitting} onSubmit={() => onSubmit(gitHubUser)}/>
+      <SubmitButton isSubmitting={isSubmitting} onSubmit={() => onSubmit(gitHubUser)} buttonDisabled={buttonDisabled}/>
     </div>
   );
 }
 
 function SubmitButton(props){
-  const { isSubmitting, onSubmit } = props
+  const { buttonDisabled, isSubmitting, onSubmit } = props
 
   let classNames = 'repo-fetch-btn'
   let text = 'Find Popular Repos'
@@ -27,7 +31,7 @@ function SubmitButton(props){
 
 
   return (
-    <button type="button" className={classNames} onClick={onSubmit}>
+    <button type="button" className={classNames} onClick={onSubmit} disabled={buttonDisabled}>
       <span>{ text }</span>
     </button>
   )
