@@ -1,18 +1,21 @@
+import React, { useState } from 'react'
+
 function RepoForm(props) {
-  const { isSubmitting } = props
+  const { isSubmitting, onSubmit, onGitHubUserChange } = props
+
+  const [gitHubUser, setGitHubUser] = useState()
 
   return (
     <div className="RepoForm">
-      <input className='repo-input' placeholder='Enter GitHub User Here'/>
+      <input className='repo-input' placeholder='Enter GitHub User Here' onChange={(e) => setGitHubUser(e.currentTarget.value)}/>
       <br />
-      <SubmitButton isSubmitting={isSubmitting}/>
-
+      <SubmitButton isSubmitting={isSubmitting} onSubmit={() => onSubmit(gitHubUser)}/>
     </div>
   );
 }
 
 function SubmitButton(props){
-  const { isSubmitting } = props
+  const { isSubmitting, onSubmit } = props
 
   let classNames = 'repo-fetch-btn'
   let text = 'Find Popular Repos'
@@ -24,7 +27,7 @@ function SubmitButton(props){
 
 
   return (
-    <button type="button" className={classNames}>
+    <button type="button" className={classNames} onClick={onSubmit}>
       <span>{ text }</span>
     </button>
   )
