@@ -7,10 +7,15 @@ function RepoForm(props) {
 
   const errorState = gitHubUser === ''
   const buttonDisabled = !gitHubUser || errorState
-  const errorSpan = errorState ? (<React.Fragment><br /><span className="input-error-label">This field is required</span></React.Fragment>) : null
+  const errorSpan = errorState ? (<React.Fragment><br /><span className='input-error-label' data-testid='input-error'>This field is required</span></React.Fragment>) : null
   return (
-    <div className="RepoForm">
-      <input className={`repo-input ${errorState ? 'input-error' : ''}`} placeholder='Enter GitHub User Here' onChange={(e) => setGitHubUser(e.currentTarget.value)}/>
+    <div className='RepoForm'>
+      <input
+        className={`repo-input ${errorState ? 'input-error' : ''}`}
+        placeholder='Enter GitHub User Here'
+        onChange={(e) => setGitHubUser(e.currentTarget.value)}
+        data-testid='user-input'
+      />
       { errorSpan }
       <br />
       <SubmitButton isSubmitting={isSubmitting} onSubmit={() => onSubmit(gitHubUser)} buttonDisabled={buttonDisabled}/>
@@ -31,7 +36,7 @@ function SubmitButton(props){
 
 
   return (
-    <button type="button" className={classNames} onClick={onSubmit} disabled={buttonDisabled}>
+    <button type='button' className={classNames} data-testid='submit-button' onClick={onSubmit} disabled={buttonDisabled}>
       <span>{ text }</span>
     </button>
   )
