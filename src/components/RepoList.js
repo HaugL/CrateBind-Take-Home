@@ -5,17 +5,17 @@ function RepoList(props) {
 
   let titleText
   if(repos == null || repos === undefined) {
-    titleText = 'Enter A User To See Most Starred Repos'
+    titleText = <h2>Enter A User To See Most Starred Repos</h2>
   } else if(repos.length > 0){
-    titleText = `Most Starred Repos for ${gitHubUser}`
+    titleText = <h2>Most Starred Repos for {gitHubUser}</h2>
   } else {
-    titleText = `Could not find any repos for ${gitHubUser}. Please enter another GitHub username`
+    titleText = <h2 data-testid='no-repos'>Could not find any repos for {gitHubUser}. Please enter another GitHub username</h2>
   }
 
   return (
-    <div className="RepoList">
-      <h2>{ titleText }</h2>
-      { (repos || []).map((repo) => <Repo repo={repo} />) }
+    <div className="RepoList" data-testid='repo-list'>
+      { titleText }
+      { (repos || []).map((repo) => <Repo repo={repo} key={repo.id}/>) }
     </div>
   );
 }
@@ -23,9 +23,8 @@ function RepoList(props) {
 
 function Repo(props) {
   const { repo } = props
-
   return (
-    <div className="Repo">
+    <div className="Repo" data-testid='repo-item'>
       <div className="repo-header">
         <div className='repo-title'>{repo.name}</div>
       </div>

@@ -11,7 +11,7 @@ export async function fetchPopularUserNonForkedRepo(username) {
 // Lower amount of data stored in local state by removing unused fields
 function filterUnusedFields(repo) {
   const strippedRepo = {}
-  const fields = ['stargazers_count','language', 'description', 'name']
+  const fields = ['stargazers_count','language', 'description', 'name', 'id']
   fields.forEach((field) => {
     strippedRepo[field] = repo[field]
   })
