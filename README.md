@@ -18,6 +18,9 @@ Adding a grid system that collapses would make more data accessible to users on 
 ### Making repo item components more interactive
 I grabbed very basic information from the individual repos to display on the screen. These components could be significantly expanded depending on what users wanted to see related to popular repos.
 
+### Adding CI/CD
+Must have for a real app
+
 ## Local Environment Setup
 
 This application runs on node version 18.12. You can use [the n library](https://www.npmjs.com/package/n "the n library") to manage multiple node versions
