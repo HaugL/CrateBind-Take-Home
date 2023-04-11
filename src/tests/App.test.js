@@ -20,7 +20,7 @@ afterEach(cleanup);
 afterAll(() => fetchMock.restore())
 
 test('renders repo items when API returns results', async () => {
-  fetchMock.mock('https://api.github.com/users/HaugL/repos', testData)
+  fetchMock.mock('https://api.github.com/users/HaugL/repos', testData, { overwriteRoutes: true })
   const { input, button } = setup()
 
   act(() => fireEvent.change(input, {target: {value: 'HaugL'}}))
@@ -43,5 +43,17 @@ test('renders message when API returns empty results', async () => {
   act(() => fireEvent.click(button))
   await waitFor(() => {
     expect(screen.getByTestId('no-repos')).toBeInTheDocument()
+  });
+});
+
+test('renders error message when API returns 404', async () => {
+  fetchMock.mock('https://api.github.com/users/HaugL/repos', 404, { overwriteRoutes: true })
+  const { input, button } = setup()
+
+  act(() => fireEvent.change(input, {target: {value: 'HaugL'}}))
+  expect(screen.getByDisplayValue('HaugL')).toBeInTheDocument()
+  act(() => fireEvent.click(button))
+  await waitFor(() => {
+    expect(screen.getByText('That GitHub User Does Not Exist')).toBeInTheDocument()
   });
 });

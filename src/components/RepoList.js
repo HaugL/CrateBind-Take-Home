@@ -1,11 +1,13 @@
 import starIcon from '../assets/images/star-pink.svg'
 
 function RepoList(props) {
-  const { repos, gitHubUser } = props
+  const { errorMessage, gitHubUser, repos } = props
 
   let titleText
   if(repos == null || repos === undefined) {
     titleText = <h2>Enter A User To See Most Starred Repos</h2>
+  } else if (errorMessage) {
+    titleText = <h2>{errorMessage}</h2>
   } else if(repos.length > 0){
     titleText = <h2>Most Starred Repos for {gitHubUser}</h2>
   } else {
