@@ -4,7 +4,7 @@ function RepoList(props) {
   const { repos, gitHubUser } = props
 
   let titleText
-  if(repos == null || repos == undefined) {
+  if(repos == null || repos === undefined) {
     titleText = 'Enter A User To See Most Starred Repos'
   } else if(repos.length > 0){
     titleText = `Most Starred Repos for ${gitHubUser}`

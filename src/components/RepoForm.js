@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 
 function RepoForm(props) {
-  const { isSubmitting, onGitHubUserChange, onSubmit } = props
+  const { isSubmitting, onSubmit } = props
 
   const [gitHubUser, setGitHubUser] = useState()
 
-  const errorState = gitHubUser == ''
+  const errorState = gitHubUser === ''
   const buttonDisabled = !gitHubUser || errorState
-  const errorSpan = errorState ? (<React.Fragment><br /><span class="input-error-label">This field is required</span></React.Fragment>) : null
+  const errorSpan = errorState ? (<React.Fragment><br /><span className="input-error-label">This field is required</span></React.Fragment>) : null
   return (
     <div className="RepoForm">
       <input className={`repo-input ${errorState ? 'input-error' : ''}`} placeholder='Enter GitHub User Here' onChange={(e) => setGitHubUser(e.currentTarget.value)}/>
